@@ -1,0 +1,91 @@
+postgres=# 
+USER: postgres 
+PASSWORD: 'newpassword';
+database = reactiveresume
+
+sudo systemctl status postgresql
+============================================================
+MINIO SERVER : 
+https://min.io/download#/linux
+
+wget https://dl.min.io/server/minio/release/linux-amd64/minio_20231213232855.0.0_amd64.deb
+
+dpkg -i minio_20231213232855.0.0_amd64.deb
+
+MINIO_ROOT_USER=admin MINIO_ROOT_PASSWORD=password minio server /mnt/data --console-address ":9001"
+
+nano ~/.mcli/config.json
+
+MINIO CLIENT :
+
+wget https://dl.min.io/client/mc/release/linux-amd64/mcli_20231214003741.0.0_amd64.deb
+
+dpkg -i mcli_20231214003741.0.0_amd64.deb
+
+mcli alias set myminio/ http://localhost admin password
+
+mcli alias set myminio/ http://MINIO-SERVER MYUSER MYPASSWORD
+=================================================================
+REDIS: 
+
+https://redis.io/docs/install/install-redis/install-redis-on-linux/
+
+curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/redis.list
+
+sudo apt-get update
+
+sudo apt-get install redis
+
+redis-server
+
+redis-server --daemonize yes
+
+redis-cli ping
+
+how to create redis user password
+
+Open the redis config file. sudo nano /etc/redis/redis.conf. You can use 'where is' option to find '# requirepass' ...
+Open terminal and connect redis-cli redis-cli.
+Set passphrase CONFIG SET requirepass "yourpassword"
+Finally, you can test AUTH yourpassword.
+
+https://stackoverflow.com/questions/7537905/how-to-set-password-for-redis
+
+
+redis://default:password@localhost:6379
+
+sudo nano /etc/redis/redis.conf
+
+=====================================================================
+
+https://pnpm.io/installation
+
+npm install -g @pnpm/exe
+
+
+=====================================================================
+
+https://stackoverflow.com/questions/71582397/eresolve-unable-to-resolve-dependency-tree-while-installing-a-pacakge
+
+=====================================================================
+
+============================AWS======================================
+
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-22-04
+Option 3 — Installing Node Using the Node Version Manager
+
+======================================================================
+
+Postgresql : 
+https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-22-04-quickstart
+
+ALTER USER postgres PASSWORD 'mcauserprod';
+
+======================================================================
+
+ssh -i 'MCA Prod.pem' ubuntu@54.215.133.251    login server 
+
+Allows SSH access to developers
+
